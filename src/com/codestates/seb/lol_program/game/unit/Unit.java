@@ -121,27 +121,38 @@ public class Unit {
     }
 
     public void levelUp() {
+        //variables
+        Scanner scanner = new Scanner(System.in);
+          //skillChosen set
+        ArrayList<Actions> skills = Skills.getActionsList();
+        String skillChosen;
+
+        //기본 업그레이드
         this.level++;
         this.attackPower += 10;
         this.defencePower += 10;
         this.hp += 10;
         System.out.println("level up!");
         System.out.println("공격력/방어력/체력이 10증가했습니다.");
-        String skill;;
-        Scanner scanner = new Scanner(System.in);
+
+        //기술 습득
         System.out.println("새로운 기술을 습득할 수 있습니다.");
         Skills.getInstance().showInfo();
 
+
         while(true) {
             System.out.println("어떤 기술을 습득하시겠습니까?");
-            System.out.println("날기(F), 땅숨기(U), 주먹강화(E)");
-            skill = scanner.nextLine();
-            if(skill.equals("F") || skill.equals("U") || skill.equals("E")) {
+            //이미 가지고 있는 스킬 이외의 스킬 출력
+            skills.stream().peek(skill -> {
+                actions.stream().filter(mySkill -> !mySkill.equals(skill)).forEach(a -> a.showInfo());
+            });
+            skillChosen = scanner.nextLine();
+            if(skillChosen.equals("F") || skillChosen.equals("U") || skillChosen.equals("E")) {
                 break;
             }
             System.out.println("잘못 입력하셨습니다.");
         }
-        switch(skill) {
+        switch(skillChosen) {
             case "F":
                 actions.add(Skills.getInstance().fly());
                 System.out.println("날기 기술이 추가되었습니다.");

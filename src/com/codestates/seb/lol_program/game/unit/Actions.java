@@ -21,11 +21,9 @@ public class Actions {
     }
 
     public void showInfo() {
-        if(info == null) {
-            System.out.println("스킬을 정의해주세요.");
-        } else {
-            System.out.println(info);
-        }
+        System.out.print(info);
+        System.out.println(" Press " + shortKey);
+
     }
 
     public String getShortKey() {

@@ -69,16 +69,16 @@ public class BattleGround {
         defenceUnit.setHp(defenceUnit.getHp() - damage <= 0 ? 0 : defenceUnit.getHp() - damage);
 
         System.out.printf("%s이(가) 공격합니다. %n", attackUnit.getUnitName());
-        System.out.printf("공격! %d %n", unitMe.getTempAttackPower());
+        System.out.printf("공격! %d %n", attackUnit.getTempAttackPower());
         System.out.printf("%s이(가) 입은 데미지 %d %n", defenceUnit.getUnitName(), damage);
-        System.out.printf("%s의 남은 체력: %d", defenceUnit.getUnitName(), unitEnemy.getHp());
+        System.out.printf("%s의 남은 체력: %d", defenceUnit.getUnitName(), defenceUnit.getHp());
         System.out.println();
         System.out.println();
 
 
         //죽은 경우
-        if(defenceUnit.getHp() - damage <= 0) {
-            System.out.printf("%s가 이겼습니다. 게임을 종료합니다.", attackUnit.getUnitName());
+        if(defenceUnit.getHp() <= 0) {
+            System.out.printf("%s가 이겼습니다. ", attackUnit.getUnitName());
             System.out.println();
             System.out.println();
             isGameOver = true;

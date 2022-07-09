@@ -41,22 +41,25 @@ public class Play {
             System.out.printf("---------round %d-----------------%n", round);
 
             battleGround = new BattleGround(myUnit, enemies.get(i));
-            battleGround.askAction();
-            battleGround.MeAttack();
-            if (battleGround.checkWin()) {
-                round++;
-                //레벨 업
-                myUnit.levelUp();
-                continue;
-            }
-            battleGround.EnemyAttack();
-            //게임에서 지면 끝
-            if (battleGround.checkWin()) {
-                System.out.println("게임을 종료합니다");
-                //게임 정보 엔티티 생성 및 저장
-                RecordEntity recordEntity = new RecordEntity(userName, round, myUnit);
-                recordRepository.save(recordEntity);
-                break;
+            while(true) {
+                battleGround.askAction();
+                battleGround.MeAttack();
+                if (battleGround.checkWin()) {
+                    round++;
+                    //레벨 업
+                    myUnit.levelUp();
+                    break;
+                }
+                battleGround.EnemyAttack();
+                //게임에서 지면 끝
+                if (battleGround.checkWin()) {
+                    System.out.println("게임을 종료합니다");
+                    //게임 정보 엔티티 생성 및 저장
+                    RecordEntity recordEntity = new RecordEntity(userName, round, myUnit);
+                    recordRepository.save(recordEntity);
+                    i = 100;
+                    break;
+                }
             }
         }
         //최종 보스 깨고 나면

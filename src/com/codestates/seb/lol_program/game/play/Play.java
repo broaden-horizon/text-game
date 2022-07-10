@@ -33,6 +33,8 @@ public class Play {
         //배틀 그라운드 객체 생성
         BattleGround battleGround;
 
+        //최종 보스 이겼는지 파악하는 변수
+        boolean finalWin = true;
 
 
         //최대 4라운드 돌기
@@ -58,13 +60,17 @@ public class Play {
                     RecordEntity recordEntity = new RecordEntity(userName, round, myUnit);
                     recordRepository.save(recordEntity);
                     i = 100;
+                    finalWin = false;
                     break;
                 }
             }
         }
-        //최종 보스 깨고 나면
-        System.out.println("최종 보스를 이겼습니다. 축하합니다!");
-        RecordEntity recordEntity = new RecordEntity(userName, round, myUnit);
-        recordRepository.save(recordEntity);
+
+        if(finalWin == true) {
+            //최종 보스 깨고 나면
+            System.out.println("최종 보스를 이겼습니다. 축하합니다!");
+            RecordEntity recordEntity = new RecordEntity(userName, round, myUnit);
+            recordRepository.save(recordEntity);
+        }
     }
 }

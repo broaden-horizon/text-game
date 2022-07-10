@@ -1,6 +1,6 @@
 package com.codestates.seb.lol_program.game.db;
 
-import com.codestates.seb.lol_program.db.DbEntity;
+import com.codestates.seb.lol_program.dbInterface.DbEntity;
 import com.codestates.seb.lol_program.game.unit.Unit;
 
 public class RecordEntity extends DbEntity {

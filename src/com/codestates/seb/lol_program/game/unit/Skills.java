@@ -1,9 +1,8 @@
 package com.codestates.seb.lol_program.game.unit;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
-
+//기술을 만들어 모아두는 클래스
 public class Skills {
 
     private static Skills skills = null;
@@ -78,4 +77,73 @@ public class Skills {
         return noramlDefence;
     }
 
+    //기술 클래스
+    public static class Actions {
+        private String name;
+        private int plusAttackPower;
+        private int plusDefencePower;
+        private String info;
+        //기술 명령어
+        private String shortKey;
+
+        public Actions() {
+
+        }
+
+        public Actions(String name, int plusAttackPower, int plusDefencePower, String info, String shortKey) {
+            this.name = name;
+            this.plusAttackPower = plusAttackPower;
+            this.plusDefencePower = plusDefencePower;
+            this.info = info;
+            this.shortKey = shortKey;
+        }
+
+        public void showInfo() {
+            System.out.print(info);
+            System.out.println(" Press " + shortKey);
+
+        }
+
+        public String getShortKey() {
+            return shortKey;
+        }
+
+        public void setShortKey(String shortKey) {
+            this.shortKey = shortKey;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getPlusAttackPower() {
+            return plusAttackPower;
+        }
+
+        public void setPlusAttackPower(int plusAttackPower) {
+            this.plusAttackPower = plusAttackPower;
+        }
+
+        public int getPlusDefencePower() {
+            return plusDefencePower;
+        }
+
+        public void setPlusDefencePower(int plusDefencePower) {
+            this.plusDefencePower = plusDefencePower;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+
+
+    }
 }

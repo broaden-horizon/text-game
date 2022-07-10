@@ -1,6 +1,6 @@
 package com.codestates.seb.lol_program.game.battle;
 
-import com.codestates.seb.lol_program.game.unit.Actions;
+import com.codestates.seb.lol_program.game.unit.Skills;
 import com.codestates.seb.lol_program.game.unit.Unit;
 
 import java.util.Optional;
@@ -31,19 +31,19 @@ public class BattleGround {
 
         System.out.println("어떤 액션을 취하시겠습니까?");
         String key = scanner.nextLine();
-        Optional<Actions> optionalAction = unitMe
+        Optional<Skills.Actions> optionalAction = unitMe
                 .getActions()
                 .stream()
                 .filter(keys -> keys.getShortKey().equals(key))
                 .findFirst();
-        Actions realAction;
+        Skills.Actions realAction;
         if(optionalAction.isEmpty()) {
             System.out.println("다시 입력해주세요");
             askAction();
         } else {
             realAction = optionalAction.get();
-            unitMe.setTempAttackPower(unitMe.getAttackPower() + realAction.getPlusAttackPower());
-            unitMe.setTempDefencePower(unitMe.getDefencePower() + realAction.getPlusDefencePower());
+            unitMe.setTempAttackPower(unitMe.getAttackPower() + realAction.getPlusAttackPower() >= 0 ? unitMe.getAttackPower() + realAction.getPlusAttackPower() : 0);
+            unitMe.setTempDefencePower(unitMe.getDefencePower() + realAction.getPlusDefencePower() >= 0 ? unitMe.getDefencePower() + realAction.getPlusDefencePower() : 0);
             System.out.println("다음 액션을 수행합니다: " + realAction.getName());
             System.out.println("최종 공격력: " + Integer.toString(unitMe.getTempAttackPower()));
             System.out.println("최종 방어력: " + Integer.toString(unitMe.getTempDefencePower()));
@@ -64,7 +64,11 @@ public class BattleGround {
     public void attack(Unit attackUnit, Unit defenceUnit) {
         //공격자의 공격력과 방어자의 방어력의 합에서 공격자의 공격력이 차지하는 비율만큼의 값을 방어자의 체력에서 감소
         double attackRatio = ((double) attackUnit.getTempAttackPower() / (double) (attackUnit.getTempAttackPower() + defenceUnit.getTempDefencePower()));
+        System.out.print("acttackRatio: ");
+        System.out.println(attackRatio);
         int damage = (int) (attackUnit.getTempAttackPower() * attackRatio);
+        System.out.print("damage : ");
+        System.out.println(damage);
         //방어자의 체력 감소
         defenceUnit.setHp(defenceUnit.getHp() - damage <= 0 ? 0 : defenceUnit.getHp() - damage);
 

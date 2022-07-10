@@ -26,27 +26,27 @@ public class Enemies {
     }
 
     private Unit level1() {
-        Unit enemy = new Unit("level1Enemy", 5, 5, 10);
+        Unit enemy = new Unit("level1Enemy", 5, 5, 10, 1);
         enemy.setTempDefencePower(5);
         enemy.setTempAttackPower(5);
         return enemy;
     }
     private Unit level2() {
-        Unit enemy = new Unit("level2Enemy", 10, 10, 15);
-        enemy.setTempDefencePower(10);
-        enemy.setTempAttackPower(10);
+        Unit enemy = new Unit("level2Enemy", 20, 20, 20, 2);
+        enemy.setTempDefencePower(20);
+        enemy.setTempAttackPower(20);
         return enemy;
     }
     private Unit level3() {
-        Unit enemy = new Unit("level3Enemy", 15, 15, 20);
-        enemy.setTempDefencePower(15);
-        enemy.setTempAttackPower(15);
+        Unit enemy = new Unit("level3Enemy", 40, 40, 40, 3);
+        enemy.setTempDefencePower(40);
+        enemy.setTempAttackPower(40);
         return enemy;
     }
     private Unit level4() {
-        Unit enemy = new Unit("level4Enemy", 20, 20, 30);
-        enemy.setTempDefencePower(20);
-        enemy.setTempAttackPower(20);
+        Unit enemy = new Unit("level4Enemy", 60, 60, 80, 4);
+        enemy.setTempDefencePower(60);
+        enemy.setTempAttackPower(60);
         return enemy;
     }
 

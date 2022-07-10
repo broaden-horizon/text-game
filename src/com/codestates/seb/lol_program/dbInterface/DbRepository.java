@@ -1,4 +1,4 @@
-package com.codestates.seb.lol_program.db;
+package com.codestates.seb.lol_program.dbInterface;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.codestates.seb.lol_program.game.db;
 
-import com.codestates.seb.lol_program.db.DbRepository;
+import com.codestates.seb.lol_program.dbInterface.DbRepository;
 
 public class RecordRepository extends DbRepository<RecordEntity> {
 
